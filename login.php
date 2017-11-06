@@ -1,7 +1,37 @@
+<?php
+    session_start();
+    $bool = 1;
+    $file = @fopen("./login.txt", "r+");
+    if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['pass'])) {
+      extract($_POST);
+      if($file){
+        while(!feof($file) && $bool==1){
+            $ligne=fgets($file);
+            $logth=strtok($ligne, ';');
+            $passth=strtok(';');
+            if($logth==$login && $passth==$pass){
+              $_SESSION['login'] = $_POST['login'];
+              $_SESSION['pass'] = $_POST['pass'];
+              $bool=0;
+              header('Location: home.php');
+              exit();
+            }
+        }
+        if($bool!=0){
+          echo "Vous devez saisir des identifiants valides";
+        }
+      }
+      else {
+        echo "il y a un probleme";
+      }
+    }
+    fclose($file);
+       ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Agenda ZZ</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,12 +46,6 @@
   <link rel="stylesheet" href="assets/css/form-elements.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
   <!-- Favicon and touch icons -->
   <link rel="shortcut icon" href="assets/ico/favicon.png">
@@ -38,7 +62,7 @@
       <img src="images/logoISIMA.png" alt="logoISIMA">
     </div>
     <div class="col-md-8">
-        <a href="home.html"><h1>ZZagenda</h1></a>    </div>
+        <a href="home.php"><h1>ZZagenda</h1></a>    </div>
     <div class="col-md-2">
       <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -66,17 +90,18 @@
         </div>
         </div>
         <div class="form-bottom">
-      <form role="form" action="" method="post" class="login-form">
+      <form role="form" action="./login.php" method="post" class="login-form">
         <div class="form-group">
           <label class="sr-only" for="form-username">Username</label>
-            <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+            <input type="login" name="login" placeholder="Username..." class="form-username form-control" id="form-username">
           </div>
           <div class="form-group">
             <label class="sr-only" for="form-password">Password</label>
-            <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+            <input type="pass" name="pass" placeholder="Password..." class="form-password form-control" id="form-password">
           </div>
           <button type="submit" class="btn btn1">Sign in!</button>
       </form>
+
     </div>
     </div>
 </div>

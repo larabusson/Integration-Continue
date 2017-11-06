@@ -19,7 +19,7 @@
       <img src="images/logoISIMA.png" alt="logoISIMA">
     </div>
     <div class="col-md-8">
-      <a href="home.html"><h1>ZZagenda</h1></a>
+      <a href="home.php"><h1>ZZagenda</h1></a>
     </div>
     <div class="col-md-2">
       <div class="dropdown">
