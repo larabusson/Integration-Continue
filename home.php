@@ -3,6 +3,7 @@
   $Connecte = false ;
   if (!empty($_SESSION['login']) && !empty($_SESSION['pass'])){
     $Connecte = true;
+    if($_SESSION['admin']=='2') $admin = true;
   }
 ?>
         <!DOCTYPE html>
@@ -48,6 +49,11 @@
                     }
                     ?>
                     <h2> days </h2>
+                    <?php
+                    if ($Connecte && $admin) {
+                      echo "<button type="button" class="btn add btn-outline-primary"> + ADD</button></a>";
+                    }
+                    ?>
                     <table class="table table-striped">
                           <thead>
                               <tr>

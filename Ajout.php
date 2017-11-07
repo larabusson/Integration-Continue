@@ -1,3 +1,34 @@
+<?php
+ if(isset($_POST) && $_SESSION['admin']=='2' &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location']) && !empty($_POST['description'])){
+   $array = array(
+     'title'=>$_POST['title'],
+     'author'=>$_POST['author'],
+     'date'=>$_POST['date'],
+     'time'=>$_POST['time'],
+     'location'=>$_POST['location'],
+     'description'=>$_POST['description']
+   );
+   $contenu_json =json_encode($array);
+
+    // Nom du fichier à créer
+    $nom_du_fichier = 'list_conf.json';
+
+    // Ouverture du fichier
+    $fichier = fopen($nom_du_fichier, 'a+');
+
+    // Ecriture dans le fichier
+    fwrite($fichier, $contenu_json);
+
+    // Fermeture du fichier
+    fclose($fichier);
+
+
+ }
+else echo 'toutes les cases ne sont pas remplies correctement' ;
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,25 +69,25 @@
 
   <div class="container">
     <h2>Add an event</h2>
-    <form>
+    <form role="form" action="./Ajout.php" method="post" class="Ajout-form">
       <div class="col-md-5">
 
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">TITLE</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" value="" id="example-text-input">
+          <input class="form-control monstyle" name="title" type="text" value="" id="example-text-input">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">AUTHOR</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" value="" id="example-text-input">
+          <input class="form-control monstyle" type="text" name="author" value="" id="example-text-input">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">LOCATION</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" value="" id="example-text-input">
+          <input class="form-control monstyle" type="text" name="location" value="" id="example-text-input">
         </div>
       </div>
     </div>
@@ -64,23 +95,30 @@
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">DATE</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="date" value="2011-08-19" id="example-date-input">
+          <input class="form-control monstyle" type="date" name="date" value="2011-08-19" id="example-date-input">
         </div>
       </div>
       <div class="form-group row">
           <label for="example-time-input" class="col-2 col-form-label">TIME</label>
           <div class="col-10">
-            <input class="form-control monstyle" type="time" value="13:45:00" id="example-time-input">
+            <input class="form-control monstyle" type="time" name="time" value="13:45:00" id="example-time-input">
           </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Description</label>
         <div class="col-10">
-          <input class="form-control monstyle descr" type="text" value="" id="example-text-input">
+          <input class="form-control monstyle descr" type="text" name="description" value="" id="example-text-input">
         </div>
       </div>
     </div>
-  </div>
+    <div class="col-md-1">
+      <div class="form-group row">
+        <button type="submit" class="btn btn-primary"> + ADD Event</button>
+      </div>
+    </div>
+  </form>
+</div>
+
 
 
 

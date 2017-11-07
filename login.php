@@ -9,9 +9,11 @@
             $ligne=fgets($file);
             $logth=strtok($ligne, ';');
             $passth=strtok(';');
+            $admin=strtok(';');
             if($logth==$login && $passth==$pass){
               $_SESSION['login'] = $_POST['login'];
               $_SESSION['pass'] = $_POST['pass'];
+              $_SESSION['admin'] = $admin;
               $bool=0;
               header('Location: home.php');
               exit();
