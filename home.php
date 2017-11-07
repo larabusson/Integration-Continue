@@ -3,8 +3,11 @@
   $Connecte = false ;
   if (!empty($_SESSION['login']) && !empty($_SESSION['pass'])){
     $Connecte = true;
-    if($_SESSION['admin']=='2') $admin = true;
   }
+	$file_precontent=file_get_contents("list_conf.json");
+	$file_content=json_decode($file_precontent,true);
+	$arr = array("un", "deux", "trois");
+	var_dump($file_content);
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -49,11 +52,6 @@
                     }
                     ?>
                     <h2> days </h2>
-                    <?php
-                    if ($Connecte && $admin) {
-                      echo "<button type="button" class="btn add btn-outline-primary"> + ADD</button></a>";
-                    }
-                    ?>
                     <table class="table table-striped">
                           <thead>
                               <tr>
@@ -63,21 +61,17 @@
                               </tr>
                           </thead>
                           <tbody>
+                          <?php if($file_content):
+							$i=0;
+							while($i < sizeof($file_content['Confs'])){ ?>
                               <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>john@example.com</td>
-                              </tr>
-                              <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>mary@example.com</td>
-                              </tr>
-                              <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>july@example.com</td>
-                              </tr>
+                                <td><?php echo $file_content['Confs'][$i]['Time']; ?></td>
+                                <td><?php echo $file_content['Confs'][$i]['Author']; ?></td>
+                                <td><?php echo $file_content['Confs'][$i]['Title']; ?></td>
+                              </tr> 
+                              <?php $i++; } ?>                                                 
+                          <?php else: echo "nique ta mère"; ?>
+                          <?php endif; ?>
                           </tbody>
                     </table>
               </div>
@@ -87,7 +81,7 @@
         <footer class="container-fluid text-center">
           <div class="row">
             <div class="col-md-4">
-              <a href="./Administration.html"><button type="button" class="btn btn-link">Administrateur</button></a>
+              <a href="./Administration.php"><button type="button" class="btn btn-link">Administrateur</button></a>
             </div>
             <div class="col-md-4">
               <button type="button" class="btn btn-link">Ajout Conference</button>
