@@ -1,4 +1,5 @@
 <?php
+  require_once('./function.php');
   session_start();
   $Connecte = false ;
   if (!empty($_SESSION['login']) && !empty($_SESSION['pass'])){
@@ -50,9 +51,9 @@
                     ?>
                     <h2> days </h2>
                     <?php
-                    if ($Connecte && $admin) {
+                    /*if ($Connecte && $admin) {
                       echo "<button type="button" class="btn add btn-outline-primary"> + ADD</button></a>";
-                    }
+                    }*/
                     ?>
                     <table class="table table-striped">
                           <thead>

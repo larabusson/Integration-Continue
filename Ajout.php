@@ -1,30 +1,6 @@
 <?php
- if(isset($_POST) && $_SESSION['admin']=='2' &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location']) && !empty($_POST['description'])){
-   $array = array(
-     'title'=>$_POST['title'],
-     'author'=>$_POST['author'],
-     'date'=>$_POST['date'],
-     'time'=>$_POST['time'],
-     'location'=>$_POST['location'],
-     'description'=>$_POST['description']
-   );
-   $contenu_json =json_encode($array);
-
-    // Nom du fichier à créer
-    $nom_du_fichier = 'list_conf.json';
-
-    // Ouverture du fichier
-    $fichier = fopen($nom_du_fichier, 'a+');
-
-    // Ecriture dans le fichier
-    fwrite($fichier, $contenu_json);
-
-    // Fermeture du fichier
-    fclose($fichier);
-
-
- }
-else echo 'toutes les cases ne sont pas remplies correctement' ;
+session_start();
+require_once('./function.php');
 
  ?>
 
@@ -138,3 +114,12 @@ else echo 'toutes les cases ne sont pas remplies correctement' ;
 
 </body>
 </html>
+
+
+<?php
+if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
+  AjoutConference();
+  echo"hello";
+}
+
+ ?>
