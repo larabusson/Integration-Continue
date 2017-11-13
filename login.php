@@ -64,7 +64,7 @@
       <img src="images/logoISIMA.png" alt="logoISIMA">
     </div>
     <div class="col-md-8">
-        <a href="home.php"><h1>ZZagenda</h1></a>    </div>
+        <h1>ZZagenda</h1>   </div>
     <div class="col-md-2">
       <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

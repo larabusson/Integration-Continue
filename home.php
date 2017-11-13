@@ -1,14 +1,17 @@
 <?php
-  require_once('./function.php');
   session_start();
   $Connecte = false ;
   if (!empty($_SESSION['login']) && !empty($_SESSION['pass'])){
     $Connecte = true;
   }
+  else header('Location : deconnexion.php');
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
 	$arr = array("un", "deux", "trois");
+	$i= sizeof($file_content);
+	foreach ($file_content as $v){ echo $v['title'];}
 	var_dump($file_content);
+
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -29,7 +32,7 @@
               <img src="images/logoISIMA.png" alt="logoISIMA">
             </div>
             <div class="col-md-8">
-              <a href="home.html"><h1>ZZagenda</h1></a>
+              <h1>ZZagenda</h1>
             </div>
             <div class="col-md-2">
               <div class="dropdown">
@@ -53,33 +56,29 @@
                     }
                     ?>
                     <h2> days </h2>
-<<<<<<< HEAD
-                    <?php
-                    /*if ($Connecte && $admin) {
-                      echo "<button type="button" class="btn add btn-outline-primary"> + ADD</button></a>";
-                    }*/
-                    ?>
-=======
->>>>>>> 0c9b7ed3a30ac4e1f3fedd02b4d32939bcfb1966
                     <table class="table table-striped">
                           <thead>
                               <tr>
                                 <th>Time <i class="fa fa-clock-o" aria-hidden="true"></i></th>
                                 <th>Who</th>
                                 <th>Subject</th>
+                                <th>Location</th>
+                                <th>Description</th>
                               </tr>
                           </thead>
                           <tbody>
-                          <?php if($file_content):
+                              <?php if($file_content):
 							$i=0;
-							while($i < sizeof($file_content['Confs'])){ ?>
+							foreach ($file_content as $v){ ?>
                               <tr>
-                                <td><?php echo $file_content['Confs'][$i]['Time']; ?></td>
-                                <td><?php echo $file_content['Confs'][$i]['Author']; ?></td>
-                                <td><?php echo $file_content['Confs'][$i]['Title']; ?></td>
-                              </tr> 
-                              <?php $i++; } ?>                                                 
-                          <?php else: echo "nique ta mère"; ?>
+                                <td><?php echo $v['time']; ?></td>
+                                <td><?php echo $v['author']; ?></td>
+                                <td><?php echo $v['title']; ?></td>
+                                <td><?php echo $v['location']; ?></td>
+                                <td><?php echo $v['description']; ?></td>
+                              </tr>
+                              <?php $i++; } ?>
+                          <?php else: echo "Pas de fichier json en entrée"; ?>
                           <?php endif; ?>
                           </tbody>
                     </table>
@@ -90,13 +89,13 @@
         <footer class="container-fluid text-center">
           <div class="row">
             <div class="col-md-4">
-              <a href="./Administration.php"><button type="button" class="btn btn-link">Administrateur</button></a>
+              <a href="./Administration.html"><button type="button" class="btn btn-link">Administrateur</button></a>
             </div>
             <div class="col-md-4">
               <button type="button" class="btn btn-link">Ajout Conference</button>
             </div>
             <div class="col-md-4">
-              <a href="./login.php"><button type="button" class="btn btn-link">Sign in
+              <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
               </button></a>
             </div>
         </footer>
