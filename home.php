@@ -7,11 +7,14 @@
   else header('Location : deconnexion.php');
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
+<<<<<<< HEAD
 	$arr = array("un", "deux", "trois");
 	$i= sizeof($file_content);
 	foreach ($file_content as $v){ echo $v['title'];}
 	var_dump($file_content);
 
+=======
+>>>>>>> 753bd27c75b54682ae4ba3312c799ef5d84b4a09
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -76,8 +79,13 @@
                                 <td><?php echo $v['title']; ?></td>
                                 <td><?php echo $v['location']; ?></td>
                                 <td><?php echo $v['description']; ?></td>
+<<<<<<< HEAD
                               </tr>
                               <?php $i++; } ?>
+=======
+                              </tr> 
+                              <?php $i++; } ?>                                                 
+>>>>>>> 753bd27c75b54682ae4ba3312c799ef5d84b4a09
                           <?php else: echo "Pas de fichier json en entrée"; ?>
                           <?php endif; ?>
                           </tbody>

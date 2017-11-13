@@ -4,16 +4,15 @@
     $file = @fopen("./login.txt", "r+");
     if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['pass'])) {
       extract($_POST);
+      $crypted_pass=hash("md5",$_POST['pass']);
       if($file){
         while(!feof($file) && $bool==1){
             $ligne=fgets($file);
             $logth=strtok($ligne, ';');
             $passth=strtok(';');
-            $admin=strtok(';');
-            if($logth==$login && $passth==$pass){
+            if($logth==$login && $crypted_pass==$passth){
               $_SESSION['login'] = $_POST['login'];
               $_SESSION['pass'] = $_POST['pass'];
-              $_SESSION['admin'] = $admin;
               $bool=0;
               header('Location: home.php');
               exit();
