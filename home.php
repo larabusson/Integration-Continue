@@ -6,10 +6,6 @@
   }
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
-	$arr = array("un", "deux", "trois");
-	$i= sizeof($file_content);
-	foreach ($file_content as $v){ echo $v['title'];}
-	var_dump($file_content);
 ?>
         <!DOCTYPE html>
         <html lang="en">
