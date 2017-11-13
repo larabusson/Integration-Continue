@@ -1,7 +1,10 @@
 <?php
 session_start();
-if (empty($_SESSION['login']) || empty($_SESSION['pass']) || !$_SESSION['admin']){
-  header('Location : login.php');
+if (empty($_SESSION['login']) || empty($_SESSION['pass'])) {
+  header('Location: login.php');
+}
+else if (!$_SESSION['admin']){
+  header('Location: home.php');
 }
 else require_once('./function.php');
 
@@ -105,13 +108,11 @@ else require_once('./function.php');
 <footer class="container-fluid text-center">
   <div class="row">
     <div class="col-md-4">
-      <a href="./Administration.html"><button type="button" class="btn btn-link">Administrateur</button></a>
+      <a href="./home.php"><button type="button" class="btn btn-link">Diary</button></a>
     </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn-link">Ajout Conference</button>
-    </div>
-    <div class="col-md-4">
-      <a href="./login.html"><button type="button" class="btn btn-link">Sign in
+
+    <div class="col-md-offset-4 col-md-4">
+      <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
       </button></a>
     </div>
 </footer>

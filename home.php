@@ -7,10 +7,7 @@
   else header('Location : deconnexion.php');
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
-	$arr = array("un", "deux", "trois");
-	$i= sizeof($file_content);
-	foreach ($file_content as $v){ echo $v['title'];}
-	var_dump($file_content);
+
 
 ?>
         <!DOCTYPE html>
@@ -89,12 +86,9 @@
         <footer class="container-fluid text-center">
           <div class="row">
             <div class="col-md-4">
-              <a href="./Administration.html"><button type="button" class="btn btn-link">Administrateur</button></a>
+              <?php if($_SESSION['admin']) {?><a href="./Ajout.php"><button type="button" class="btn btn-link">Add Event</button></a> <?php } else echo"";?>
             </div>
-            <div class="col-md-4">
-              <a href="./Ajout.php"><button type="button" class="btn btn-link">Ajout Conference</button></a>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-offset-4 col-md-4">
               <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
               </button></a>
             </div>

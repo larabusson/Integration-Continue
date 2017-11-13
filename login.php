@@ -14,7 +14,7 @@
             if($logth==$login && $crypted_pass==$passth){
               $_SESSION['login'] = $_POST['login'];
               $_SESSION['pass'] = $_POST['pass'];
-              $_SESSION['admin']= $admin=='2'; 
+              $_SESSION['admin']= $admin=='2';
               $bool=0;
               header('Location: home.php');
               exit();
@@ -112,16 +112,7 @@
 
 
 <footer class="container-fluid text-center">
-  <div class="row">
-    <div class="col-md-4">
-      <button type="button" class="btn btn2 btn-link">Administrateur</button>
-    </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn2 btn-link">Ajout Conference</button>
-    </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn2 btn-link">Sign in</button>
-    </div>
+
 </footer>
 
 </body>
