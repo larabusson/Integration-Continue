@@ -7,10 +7,6 @@
   else header('Location : deconnexion.php');
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
-	$arr = array("un", "deux", "trois");
-	$i= sizeof($file_content);
-	foreach ($file_content as $v){ echo $v['title'];}
-	var_dump($file_content);
 
 ?>
         <!DOCTYPE html>
@@ -23,6 +19,8 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
           <link href="css/home.css" rel="stylesheet">
+          <link rel="stylesheet" href="./font-awesome-4.7.0">
+
         </head>
         <body>
 
@@ -76,6 +74,7 @@
                                 <td><?php echo $v['title']; ?></td>
                                 <td><?php echo $v['location']; ?></td>
                                 <td><?php echo $v['description']; ?></td>
+                                <td><a href="./Ajout.php"><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=true;?>"name='bouton' value=<?php $v ?>>Edit Coué</button></td></a>
                               </tr>
                               <?php $i++; } ?>
                           <?php else: echo "Pas de fichier json en entrée"; ?>
@@ -88,11 +87,9 @@
 
         <footer class="container-fluid text-center">
           <div class="row">
+            
             <div class="col-md-4">
-              <a href="./Administration.html"><button type="button" class="btn btn-link">Administrateur</button></a>
-            </div>
-            <div class="col-md-4">
-              <a href="./Ajout.php"><button type="button" class="btn btn-link">Ajout Conference</button></a>
+              <a href="./Ajout.php"><button type="button"  onclick="<?php $_SESSION['fonc']=false; ?>" class="btn btn-link">Ajout Conference</button></a>
             </div>
             <div class="col-md-4">
               <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
