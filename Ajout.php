@@ -1,6 +1,10 @@
 <?php
 session_start();
-require_once('./function.php');
+if (empty($_SESSION['login']) || empty($_SESSION['pass']) || !$_SESSION['admin']){
+  header('Location : login.php');
+}
+else require_once('./function.php');
+
 
  ?>
 
