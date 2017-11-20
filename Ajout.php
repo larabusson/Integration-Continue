@@ -6,6 +6,13 @@ if (empty($_SESSION['login']) || empty($_SESSION['pass'])){
 else{
 require_once('./function.php');
 }
+$id=$_GET['id'];
+if ($id) {
+		$file_precontent=file_get_contents("list_conf.json");
+		$contenu=json_decode($file_precontent,true);
+		$contenuT=$contenu[$id];
+		
+}
 
  ?>
 
@@ -56,19 +63,19 @@ require_once('./function.php');
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">TITLE</label>
         <div class="col-10">
-          <input class="form-control monstyle" name="title" type="text" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['title']; ?>" id="example-text-input">
+          <input class="form-control monstyle" name="title" type="text" value="<?php if ($id)  echo $contenuT['title']; ?>" id="example-text-input">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">AUTHOR</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" name="author" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['author']; ?>" id="example-text-input">
+          <input class="form-control monstyle" type="text" name="author" value="<?php if ($id)  echo $contenuT['author']; ?>" id="example-text-input">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">LOCATION</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" name="location" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['location']; ?>" id="example-text-input">
+          <input class="form-control monstyle" type="text" name="location" value="<?php if ($id)  echo $contenuT['location']; ?>" id="example-text-input">
         </div>
       </div>
     </div>
@@ -76,25 +83,25 @@ require_once('./function.php');
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">DATE</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="date" name="date" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['date']; ?>" id="example-date-input">
+          <input class="form-control monstyle" type="date" name="date" value="<?php if ($id)  echo $contenuT['date']; ?>" id="example-date-input">
         </div>
       </div>
       <div class="form-group row">
           <label for="example-time-input" class="col-2 col-form-label">TIME</label>
           <div class="col-10">
-            <input class="form-control monstyle" type="time" name="time" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['time']; ?>" id="example-time-input">
+            <input class="form-control monstyle" type="time" name="time" value="<?php if ($id)  echo $contenuT['time']; ?>" id="example-time-input">
           </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Description</label>
         <div class="col-10">
-          <input class="form-control monstyle descr" type="text" name="description" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['description']; ?>" id="example-text-input">
+          <input class="form-control monstyle descr" type="text" name="description" value="<?php if ($id)  echo $contenuT['description']; ?>" id="example-text-input">
         </div>
       </div>
     </div>
     <div class="col-md-1">
       <div class="form-group row">
-        <button type="submit" class="btn btn-primary"> + ADD Event</button>
+        <a href="home.php"><button type="submit" class="btn btn-primary"> + ADD Event</button></a>
       </div>
     </div>
   </form>
@@ -113,15 +120,28 @@ require_once('./function.php');
       </button></a>
     </div>
 </footer>
-
 </body>
 </html>
 
 
 <?php
+if ($contenu){
+		  foreach($contenu as $key => $d){
+			 $tab[$key] = $d;
+		  }
+		echo "je suis passe par la";
+		 unset($tab[$_GET['id']]);
+		 $contenu = json_encode($tab);
+		 $fichier = fopen("list_conf.json", 'w+');
+		 fwrite($fichier, $contenu);
+		 // Fermeture du fichier
+		 fclose($fichier);
+	 }
+ 
 if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
+ 
   AjoutConference();
-	echo '<script>alert(" Vous avez bien ajouté une conférence")</script>';
+  
 }
 
  ?>
