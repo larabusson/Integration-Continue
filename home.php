@@ -59,6 +59,7 @@
                           <thead>
                               <tr>
                                 <th>Time <i class="fa fa-clock-o" aria-hidden="true"></i></th>
+                                <th>Date</th>
                                 <th>Who</th>
                                 <th>Subject</th>
                                 <th>Location</th>
@@ -71,13 +72,14 @@
 							foreach ($file_content as $key=>$v){ ?>
                               <tr>
                                 <td><?php echo $v['time']; ?></td>
+                                <td><?php echo $v['date']; ?></td>
                                 <td><?php echo $v['author']; ?></td>
                                 <td><?php echo $v['title']; ?></td>
                                 <td><?php echo $v['location']; ?></td>
                                 <td><?php echo $v['description']; ?></td>
-                                <td><?php echo $key; ?></td>
                                 <td><a href="./Ajout.php?id=<?php echo $key?>" id= <?php $key ?>><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=false;?>"name='bouton' value=<?php $v ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></td></a>
-                                <td><a href="./home.php" id= <?php $key ?>><button type="button" name='bouton' onclick= "<?php /*$_SESSION['conf']=$v; suppression();*/?>"><i class="fa fa-trash" aria-hidden="true"></i></button></td></a>
+                                <td><a href="./supprimer.php?id=<?php echo $key; ?>"><button type="button" name='bouton'><i class="fa fa-trash" aria-hidden="true"></i></button></td></a>
+                                </tr>
                               </tr>
                               <?php $i++; } ?>
                           <?php else: echo "Pas de fichier json en entrée"; ?>
