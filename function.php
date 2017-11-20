@@ -22,24 +22,17 @@ function AjoutConference(){
        $tab[$key] = $d;
     }
   }
-  echo"je suis passe par la";
   $NombreConf = count($tab);
   $key = substr($date, 0, 4).substr($date, 5, 2).substr($date, 8, 2).substr($time, 0, 2).substr($time, 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
-  echo $key;
-  echo $c->title;
   $tab[$key] = $c ;
-  echo $tab[$key]->title;
   ksort($tab);
   $contenu = json_encode($tab);
   $fichier = fopen("list_conf.json", 'w+');
-  var_dump($contenu);
   // Ecriture dans le fichier
   fwrite($fichier, $contenu);
 
   // Fermeture du fichier
   fclose($fichier);
-
-
 }
 
 function suppression(){

@@ -121,7 +121,7 @@ require_once('./function.php');
 <?php
 if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
   AjoutConference();
-  echo"hello";
+	echo '<script>alert(" Vous avez bien ajouté une conférence")</script>';
 }
 
  ?>
