@@ -14,8 +14,9 @@
             if($logth==$login && $crypted_pass==$passth){
               $_SESSION['login'] = $_POST['login'];
               $_SESSION['pass'] = $_POST['pass'];
-              $_SESSION['admin']= $admin=='2'; 
+              $_SESSION['admin']= $admin=='2';
               $bool=0;
+              setcookie('login', $_POST['login'], time()+3600*24*31);
               header('Location: home.php');
               exit();
             }
@@ -96,7 +97,7 @@
       <form role="form" action="./login.php" method="post" class="login-form">
         <div class="form-group">
           <label class="sr-only" for="form-username">Username</label>
-            <input type="login" name="login" placeholder="Username..." class="form-username form-control" id="form-username">
+            <input type="login" name="login" placeholder="Username..." class="form-username form-control" id="form-username" value=<?php echo !empty($_COOKIE['login']) ? $_COOKIE['login'] : "" ?> >
           </div>
           <div class="form-group">
             <label class="sr-only" for="form-password">Password</label>
@@ -112,16 +113,7 @@
 
 
 <footer class="container-fluid text-center">
-  <div class="row">
-    <div class="col-md-4">
-      <button type="button" class="btn btn2 btn-link">Administrateur</button>
-    </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn2 btn-link">Ajout Conference</button>
-    </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn2 btn-link">Sign in</button>
-    </div>
+
 </footer>
 
 </body>

@@ -7,7 +7,7 @@
   else header('Location: deconnexion.php');
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
-
+  require_once('./function.php');
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -19,7 +19,8 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
           <link href="css/home.css" rel="stylesheet">
-          <link rel="stylesheet" href="./font-awesome-4.7.0">
+          <link rel="stylesheet" href="./font-awesome">
+          <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
 
         </head>
         <body>
@@ -74,7 +75,8 @@
                                 <td><?php echo $v['title']; ?></td>
                                 <td><?php echo $v['location']; ?></td>
                                 <td><?php echo $v['description']; ?></td>
-                                <td><a href="./Ajout.php"><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=true;?>"name='bouton' value=<?php $v ?>>Edit Coué</button></td></a>
+                                <td><a href="./Ajout.php"><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=true;?>"name='bouton' value=<?php $v ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></td></a>
+                                <td><a href="./home.php"><button type="button" name='bouton' onclick="<?php $_SESSION['conf']=$v; suppression();?>"><i class="fa fa-trash" aria-hidden="true"></i></button></td></a>
                               </tr>
                               <?php $i++; } ?>
                           <?php else: echo "Pas de fichier json en entrée"; ?>
@@ -89,7 +91,7 @@
           <div class="row">
 
             <div class="col-md-4">
-              <?php if($_SESSION[admin]==2) { ?><a href="./Ajout.php"><button type="button"  onclick="<?php $_SESSION['fonc']=false; ?>" class="btn btn-link">Ajout Conference</button></a><?php }?>
+              <?php if($_SESSION['admin']==2) { ?><a href="./Ajout.php"><button type="button"  onclick="<?php  ?>" class="btn btn-link">Ajout Conference</button></a><?php }?>
             </div>
             <div class="col-md-4">
               <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out

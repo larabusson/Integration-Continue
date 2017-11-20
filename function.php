@@ -42,7 +42,27 @@ function AjoutConference(){
 
 }
 
+function suppression(){
+  $contenu = json_decode(file_get_contents("list_conf.json"));
+  if ($contenu!=NULL){
+    foreach($contenu as $key => $d){
+       $tab[$key] = $d;
+    }
+  }
+  foreach($tab as $i){
+     if ($tab[$i] = $_SESSION['conf']){
+       $key = $i;
+       echo $i;
+     }
+   }
+   unset($tab[$key]);
+   $contenu = json_encore($tab);
+   $fichier = fopen("list_conf.json", 'w+');
+   fwrite($fichier, $contenu);
 
+   // Fermeture du fichier
+   fclose($fichier);
+ }
 
 function creerConference(){
   extract($_POST);

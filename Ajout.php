@@ -109,7 +109,7 @@ require_once('./function.php');
       <button type="button" class="btn btn-link">Ajout Conference</button>
     </div>
     <div class="col-md-6">
-      <a href="./login.html"><button type="button" class="btn btn-link">Sign in
+      <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
       </button></a>
     </div>
 </footer>
