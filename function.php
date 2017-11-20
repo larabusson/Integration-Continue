@@ -44,7 +44,6 @@ function AjoutConference(){
 
 
 
-
 function creerConference(){
   extract($_POST);
   $c = new Conference();

@@ -1,13 +1,11 @@
 <?php
 session_start();
-if (empty($_SESSION['login']) || empty($_SESSION['pass'])) {
-  header('Location: login.php');
+if (empty($_SESSION['login']) || empty($_SESSION['pass'])){
+	header('Location: login.php');
 }
-else if (!$_SESSION['admin']){
-  header('Location: home.php');
+else{
+require_once('./function.php');
 }
-else require_once('./function.php');
-
 
  ?>
 
@@ -58,19 +56,19 @@ else require_once('./function.php');
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">TITLE</label>
         <div class="col-10">
-          <input class="form-control monstyle" name="title" type="text" value="" id="example-text-input">
+          <input class="form-control monstyle" name="title" type="text" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['title']; ?>" id="example-text-input">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">AUTHOR</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" name="author" value="" id="example-text-input">
+          <input class="form-control monstyle" type="text" name="author" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['author']; ?>" id="example-text-input">
         </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">LOCATION</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="text" name="location" value="" id="example-text-input">
+          <input class="form-control monstyle" type="text" name="location" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['location']; ?>" id="example-text-input">
         </div>
       </div>
     </div>
@@ -78,19 +76,19 @@ else require_once('./function.php');
       <div class="form-group row">
         <label for="example-date-input" class="col-2 col-form-label">DATE</label>
         <div class="col-10">
-          <input class="form-control monstyle" type="date" name="date" value="2011-08-19" id="example-date-input">
+          <input class="form-control monstyle" type="date" name="date" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['date']; ?>" id="example-date-input">
         </div>
       </div>
       <div class="form-group row">
           <label for="example-time-input" class="col-2 col-form-label">TIME</label>
           <div class="col-10">
-            <input class="form-control monstyle" type="time" name="time" value="13:45:00" id="example-time-input">
+            <input class="form-control monstyle" type="time" name="time" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['time']; ?>" id="example-time-input">
           </div>
       </div>
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Description</label>
         <div class="col-10">
-          <input class="form-control monstyle descr" type="text" name="description" value="" id="example-text-input">
+          <input class="form-control monstyle descr" type="text" name="description" value="<?php if ($_SESSION['fonc'])  echo $_SESSION['conf']['description']; ?>" id="example-text-input">
         </div>
       </div>
     </div>
@@ -107,12 +105,11 @@ else require_once('./function.php');
 
 <footer class="container-fluid text-center">
   <div class="row">
-    <div class="col-md-4">
-      <a href="./home.php"><button type="button" class="btn btn-link">Diary</button></a>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-link">Ajout Conference</button>
     </div>
-
-    <div class="col-md-offset-4 col-md-4">
-      <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
+    <div class="col-md-6">
+      <a href="./login.html"><button type="button" class="btn btn-link">Sign in
       </button></a>
     </div>
 </footer>
