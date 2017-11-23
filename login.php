@@ -2,6 +2,13 @@
     session_start();
     $bool = 1;
     $file = @fopen("./login.txt", "r+");
+    include('./language.php');
+    if(isset($_GET['language'])){
+      $language=$_GET['language'];
+    }
+    else{
+      $language = 'en';
+    }
     if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['pass'])) {
       extract($_POST);
       $crypted_pass=hash("md5",$_POST['pass']);
@@ -35,7 +42,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Agenda ZZ</title>
+  <title>ZZagenda</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -74,8 +81,8 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#" title="Lien 1">Francais</a></li>
-          <li><a href="#" title="Lien 2">English</a></li
+            <li><a href="login.php?language=fr" title="Lien 1">Francais</a></li>
+            <li><a href="login.php?language=en" title="Lien 2">English</a></li
           </ul>
       </div>
     </div>
@@ -86,8 +93,8 @@
     <div class="col-sm-6 col-sm-offset-3 form-box">
       <div class="form-top">
         <div class="form-top-left">
-          <h3>Login to our site</h3>
-            <p>Enter your username and password to log on:</p>
+          <?php echo  "<h3>". $langue['signup']['msgAccueil'][$language] . "</h3>" ;?>
+            <p><?php echo $langue['signup']['msgAccueil2'][$language]; ?></p>
         </div>
         <div class="form-top-right">
           <i class="fa fa-lock"></i>
@@ -97,13 +104,13 @@
       <form role="form" action="./login.php" method="post" class="login-form">
         <div class="form-group">
           <label class="sr-only" for="form-username">Username</label>
-            <input type="login" name="login" placeholder="Username..." class="form-username form-control" id="form-username" value=<?php echo !empty($_COOKIE['login']) ? $_COOKIE['login'] : "" ?> >
+            <input type="login" name="login" placeholder=<?php echo $langue['signup']['username'][$language]; ?> class="form-username form-control" id="form-username" value=<?php echo !empty($_COOKIE['login']) ? $_COOKIE['login'] : "" ?> >
           </div>
           <div class="form-group">
             <label class="sr-only" for="form-password">Password</label>
-            <input type="pass" name="pass" placeholder="Password..." class="form-password form-control" id="form-password">
+            <input type="pass" name="pass" placeholder=<?php echo $langue['signup']['password'][$language]; ?> class="form-password form-control" id="form-password">
           </div>
-          <button type="submit" class="btn btn1">Sign in!</button>
+          <button type="submit" class="btn btn1"><?php echo $langue['signup']['submit'][$language]; ?></button>
       </form>
 
     </div>

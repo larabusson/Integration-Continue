@@ -5,6 +5,13 @@
     $Connecte = true;
   }
   else header('Location: deconnexion.php');
+  include('./language.php');
+  if(isset($_GET['language'])){
+    $language=$_GET['language'];
+  }
+  else{
+    $language = 'en';
+  }
 	$file_precontent=file_get_contents("list_conf.json");
 	$file_content=json_decode($file_precontent,true);
   require_once('./function.php');
@@ -12,7 +19,7 @@
         <!DOCTYPE html>
         <html lang="en">
         <head>
-          <title>Bootstrap Example</title>
+          <title>ZZagenda</title>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -40,8 +47,8 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                  <li><a href="#" title="Lien 1">Francais</a></li>
-                  <li><a href="#" title="Lien 2">English</a></li
+                  <li><a href="home.php?language=fr" title="Lien 1">Francais</a></li>
+                  <li><a href="home.php?language=en" title="Lien 2">English</a></li
                   </ul>
               </div>
             </div>
@@ -51,19 +58,19 @@
               <div class="container">
                     <?php
                     if ($Connecte) {
-                      echo "<h2>Bonjour " . $_SESSION['login'] . "</h2>";
+                      echo "<h2> " . $langue['home']['hi'][$language]." ". $_SESSION['login']  . "</h2>";
                     }
                     ?>
                     <h2> days </h2>
                     <table class="table table-striped">
                           <thead>
                               <tr>
-                                <th>Time <i class="fa fa-clock-o" aria-hidden="true"></i></th>
-                                <th>Date</th>
-                                <th>Who</th>
-                                <th>Subject</th>
-                                <th>Location</th>
-                                <th>Description</th>
+                                <th><?php echo $langue['home']['time'][$language]; ?> <i class="fa fa-clock-o" aria-hidden="true"></i></th>
+                                <th><?php echo $langue['home']['date'][$language]; ?></th>
+                                <th><?php echo $langue['home']['who'][$language]; ?></th>
+                                <th><?php echo $langue['home']['title'][$language]; ?></th>
+                                <th><?php echo $langue['home']['location'][$language]; ?></th>
+                                <th><?php echo $langue['home']['description'][$language]; ?></th>
                               </tr>
                           </thead>
                           <tbody>
@@ -82,7 +89,6 @@
                                 </tr>
                               </tr>
                               <?php $i++; } ?>
-                          <?php else: echo "Pas de fichier json en entrée"; ?>
                           <?php endif; ?>
                           </tbody>
                     </table>
@@ -94,10 +100,10 @@
           <div class="row">
 
             <div class="col-md-4">
-              <?php if($_SESSION['admin']==2) { ?><a href="./Ajout.php?id=0"><button type="button"  onclick="<?php $_SESSION['fonc']=true ?>" class="btn btn-link">Ajout Conference</button></a><?php }?>
+              <?php if($_SESSION['admin']==2) { ?><a href="./Ajout.php?id=0"><button type="button"  onclick="<?php $_SESSION['fonc']=true ?>" class="btn btn-link"><?php echo $langue['home']['ajoutC'][$language]; ?></button></a><?php }?>
             </div>
             <div class="col-md-4">
-              <a href="./deconnexion.php"><button type="button" class="btn btn-link">Log out
+              <a href="./deconnexion.php"><button type="button" class="btn btn-link"><?php echo $langue['home']['logout'][$language]; ?>
               </button></a>
             </div>
         </footer>
