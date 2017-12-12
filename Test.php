@@ -11,6 +11,9 @@ class TestCalc extends  PHPUnit_Framework_TestCase {
       $c=new Conference();
       $c->title = "Conference 1";
       $this->assertTrue(strcmp($c->title, "Conference 1"), "OK");
+      $c = 6;
+
+      $this->assertTrue($c==6, "Test reussi");
   }
 
 
