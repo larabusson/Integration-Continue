@@ -1,5 +1,4 @@
 <?php
-require_once("function.php");
 
 class TestCalc extends  PHPUnit_Framework_TestCase {
 
