@@ -16,7 +16,7 @@ function AjoutConference(){
   extract($_POST);
   $tab = array();
   $c = creerConference();
-  $contenu = json_decode(file_get_contents("list_conf.json"));
+  $contenu = json_decode(file_get_contents("../texte/list_conf.json"));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){
        $tab[$key] = $d;
@@ -27,7 +27,7 @@ function AjoutConference(){
   $tab[$key] = $c ;
   ksort($tab);
   $contenu = json_encode($tab);
-  $fichier = fopen("list_conf.json", 'w+');
+  $fichier = fopen("../texte/list_conf.json", 'w+');
   // Ecriture dans le fichier
   fwrite($fichier, $contenu);
 

@@ -4,5 +4,5 @@ if (isset($_SESSION['login']) && !empty($_SESSION['login']) && !empty($_SESSION[
   session_destroy();
   session_unset();
 }
-header('Location: ./login.php');
+header('Location: ../pages/login.php');
 ?>

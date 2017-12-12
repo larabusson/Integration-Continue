@@ -1,8 +1,8 @@
 <?php
     session_start();
     $bool = 1;
-    $file = @fopen("./login.txt", "r+");
-    include('./language.php');
+    $file = @fopen("../texte/login.txt", "r+");
+    include('../functions/language.php');
     if(isset($_GET['language'])){
       $language=$_GET['language'];
     }
@@ -24,7 +24,7 @@
               $_SESSION['admin']= $admin=='2';
               $bool=0;
               setcookie('login', $_POST['login'], time()+3600*24*31);
-              header('Location: home.php');
+              header('Location: ./home.php');
               exit();
             }
         }
@@ -48,29 +48,29 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="css/home.css" rel="stylesheet">
+  <link href="../css/home.css" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="assets/css/form-elements.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/form-elements.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 
 
   <!-- Favicon and touch icons -->
-  <link rel="shortcut icon" href="assets/ico/favicon.png">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 </head>
 <body>
 
 <div class="container">
   <div class="row">
     <div class="col-md-2">
-      <img src="images/logoISIMA.png" alt="logoISIMA">
+      <img src="../images/logoISIMA.png" alt="logoISIMA">
     </div>
     <div class="col-md-8">
         <h1>ZZagenda</h1>   </div>
@@ -81,8 +81,8 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="login.php?language=fr" title="Lien 1">Francais</a></li>
-            <li><a href="login.php?language=en" title="Lien 2">English</a></li
+            <li><a href="./login.php?language=fr" title="Lien 1">Francais</a></li>
+            <li><a href="./login.php?language=en" title="Lien 2">English</a></li
           </ul>
       </div>
     </div>
@@ -108,7 +108,7 @@
           </div>
           <div class="form-group">
             <label class="sr-only" for="form-password">Password</label>
-            <input type="pass" name="pass" placeholder=<?php echo $langue['signup']['password'][$language]; ?> class="form-password form-control" id="form-password">
+            <input type="password" name="pass" placeholder=<?php echo $langue['signup']['password'][$language]; ?> class="form-password form-control" id="form-password">
           </div>
           <button type="submit" class="btn btn1"><?php echo $langue['signup']['submit'][$language]; ?></button>
       </form>
