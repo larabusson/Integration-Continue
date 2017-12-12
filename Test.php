@@ -1,5 +1,5 @@
 <?php
-require_once("./functions/functin.php");
+require_once("./functions/function.php");
 class TestCalc extends  PHPUnit_Framework_TestCase {
 
   public function setup(){
