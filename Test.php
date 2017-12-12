@@ -10,10 +10,10 @@ class TestCalc extends  PHPUnit_Framework_TestCase {
   public function Conf(){
       $c=new Conference();
       $c->title = "Conference 1"
-      $this->assertTrue($c->title=="Conference 1", "OK");
+      $this->assertTrue(strcmp($c->title, "Conference 1"), "OK");
   }
 
-  
+
 
 }
 
