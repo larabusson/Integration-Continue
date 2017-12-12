@@ -140,7 +140,7 @@ if ($id) {
 <?php
 if ($contenu){
 		  foreach($contenu as $key => $d){
-			 $tab[$key] = $d;
+			 $tab[$key] = $d; 
 		  }
 		 unset($tab[$_GET['id']]);
 		 $contenu = json_encode($tab);
