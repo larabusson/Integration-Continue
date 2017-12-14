@@ -14,9 +14,9 @@ class MesTests extends  PHPUnit_Framework_TestCase {
   }
 
   public function test_Lecture_Fichier(){
-      $tab = Tableau_Conf("../texte/Conf_test.json");
+      $tab = Tableau_Conf("./texte/Conf_test.json");
       $NB = count($tab);
-      $this->assertTrue(3==$NB, "OK");    
+      $this->assertTrue(3==$NB, "OK");
   }
 
 
