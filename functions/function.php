@@ -16,18 +16,20 @@ function AjoutConference(){
   extract($_POST);
   $tab = array();
   $c = creerConference();
-  $contenu = json_decode(file_get_contents("../texte/list_conf.json"));
+  /*$contenu = json_decode(file_get_contents("../texte/list_conf.json"));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){
        $tab[$key] = $d;
     }
-  }
+  }*/
+  $tab=Tableau_Conf("../texte/list_conf.json");
   $NombreConf = count($tab);
   $key = substr($date, 0, 4).substr($date, 5, 2).substr($date, 8, 2).substr($time, 0, 2).substr($time, 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
   $tab[$key] = $c ;
   ksort($tab);
   $contenu = json_encode($tab);
   $fichier = fopen("../texte/list_conf.json", 'w+');
+
   // Ecriture dans le fichier
   fwrite($fichier, $contenu);
 
@@ -35,6 +37,16 @@ function AjoutConference(){
   fclose($fichier);
 }
 
+
+function Tableau_Conf($chemin){
+  $contenu = json_decode(file_get_contents($chemin));
+  if ($contenu!=NULL){
+    foreach($contenu as $key => $d){
+       $tab[$key] = $d;
+    }
+  }
+  return $tab ;
+}
 
 function creerConference(){
   extract($_POST);

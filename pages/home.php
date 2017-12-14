@@ -86,7 +86,7 @@
                                 <?php if ($_SESSION['admin']==2){ ?>
                                 <td><a href="./Ajout.php?id=<?php echo $key?>" id= <?php $key ?>><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=false;?>"name='bouton' value=<?php $v ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></td></a>
                                 <td><a href="../functions/supprimer.php?id=<?php echo $key; ?>"><button type="button" name='bouton'><i class="fa fa-trash" aria-hidden="true"></i></button></td></a>
-                              <?php } ?>  
+                              <?php } ?>
                                 </tr>
                               </tr>
                               <?php $i++; } ?>
