@@ -14,11 +14,11 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $tab['date']="2050-02-03";
       $tab['time']="10-10";
       $tab['description']="";
-
+      AjoutConference($tab, "./texte/Conf_test.json");
       $c=creerConference($tab);
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
 
-      AjoutConference($tab, "./texte/Conf_test.json");
+
 /*$Tableau_conf = Tableau_Conf("./texte/Conf_test.json");
       $NB = count($Tableau_conf);
       $this->assertTrue(0==$NB, "OK");
