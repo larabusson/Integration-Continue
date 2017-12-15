@@ -18,21 +18,21 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $c=creerConference($tab);
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
 
-    /*  AjoutConference($tab, "./texte/Conf_test.json");
+      AjoutConference($tab, "./texte/Conf_test.json");
       $Tableau_conf = Tableau_Conf("./texte/Conf_test.json");
       $NB = count($Tableau_conf);
-      $this->assertTrue(4==$NB, "OK");*/
+      $this->assertTrue(1==$NB, "OK");
     /*  $key = creer_clef($tab);
       echo $key;
       echo array_key_exists($key , $Tableau_conf);
       $this->assertTrue(array_key_exists($key , $Tableau_conf));*/
   }
 
-  /*public function test_Lecture_Fichier(){
+  public function test_Lecture_Fichier(){
       $tab = Tableau_Conf("./texte/Conf_test.json");
       $NB = count($tab);
       $this->assertTrue(3==$NB, "OK");
-  }*/
+  }
 
 
 
