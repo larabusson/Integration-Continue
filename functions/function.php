@@ -16,7 +16,6 @@ function AjoutConference($d, $chemin){
   $tab = array();
   $c = creerConference($d);
   $tab=Tableau_Conf($chemin);
-  if($tab){
   $NombreConf = count($tab);
   $key= creer_clef($d, $NombreConf);
   $tab[$key] = $c ;
@@ -29,7 +28,6 @@ function AjoutConference($d, $chemin){
 
   // Fermeture du fichier
   fclose($fichier);
-}
 }
 
 function creer_clef($d, $NombreConf){
