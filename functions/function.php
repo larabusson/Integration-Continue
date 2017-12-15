@@ -30,7 +30,7 @@ function AjoutConference($d, $chemin){
   fclose($fichier);
 }
 
-function creer_clef($d){
+function creer_clef($d, $NombreConf){
   $key = substr($d['date'], 0, 4).substr($d['date'], 5, 2).substr($d['date'], 8, 2).substr($d['time'], 0, 2).substr($d['time'], 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
   return  $key;
 }

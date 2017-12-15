@@ -144,10 +144,8 @@ if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty
 	 if (checkdate(substr($_POST['date'], 5, 2), substr($_POST['date'], 8, 2), substr($_POST['date'], 0, 4))){
 			$today=$today['mday'].'-'.$today['mon'].'-'.$today['year'];
 			if(strtotime($_POST['date']) > strtotime($today)){
-				$_SESSION['redirection'] = 1;
 				extract($_POST);
-				$d=$_POST;
-				AjoutConference($d, "../texte/list_conf.json");
+				AjoutConference($_POST, "../texte/list_conf.json");
 			}
 	 else echo "Attention la date n est pas correcte";
 	}
