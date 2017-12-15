@@ -11,12 +11,17 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $tab['title']="test";
       $tab['location']="";
       $tab['author']="";
-      $tab['date']="";
-      $tab['time']="";
+      $tab['date']="2017-02-03";
+      $tab['time']="10-10";
       $tab['description']="";
 
       $c=creerConference($tab);
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
+
+      AjoutConference($tab, "./texte/Conf_test.json");
+      $Tableau_conf = Tableau_Conf("./texte/Conf_test.json");
+      $key = creer_clef($tab);
+      assertTrue(array_key_exists ($key , $Tableau_conf );
   }
 
   public function test_Lecture_Fichier(){

@@ -144,7 +144,9 @@ if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty
 			$today=$today['mday'].'-'.$today['mon'].'-'.$today['year'];
 			if(strtotime($_POST['date']) > strtotime($today)){
 				$_SESSION['redirection'] = 1;
-			  AjoutConference();
+				extract($_POST);
+				$d=$_POST;
+				AjoutConference($d, "../texte/list_conf.json");
 			}
 	 else echo "Attention la date n est pas correcte";
 	}

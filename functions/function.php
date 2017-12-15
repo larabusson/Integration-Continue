@@ -12,17 +12,18 @@ public $date;
 }
 
 
-function AjoutConference(){
-  extract($_POST);
+function AjoutConference($d, $chemin){
+  //extract($_POST);
   $tab = array();
-  $c = creerConference($_POST);
-  $tab=Tableau_Conf("../texte/list_conf.json");
+  $c = creerConference($d);
+  $tab=Tableau_Conf($chemin);
   $NombreConf = count($tab);
-  $key = substr($date, 0, 4).substr($date, 5, 2).substr($date, 8, 2).substr($time, 0, 2).substr($time, 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
+  //$key = substr($d['date'], 0, 4).substr($d['date'], 5, 2).substr($d['date'], 8, 2).substr($d['time'], 0, 2).substr($d['time'], 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
+  $key= creer_clef($d);
   $tab[$key] = $c ;
   ksort($tab);
   $contenu = json_encode($tab);
-  $fichier = fopen("../texte/list_conf.json", 'w+');
+  $fichier = fopen($chemin, 'w+');
 
   // Ecriture dans le fichier
   fwrite($fichier, $contenu);
@@ -31,6 +32,10 @@ function AjoutConference(){
   fclose($fichier);
 }
 
+function creer_clef($d){
+  $key = substr($d['date'], 0, 4).substr($d['date'], 5, 2).substr($d['date'], 8, 2).substr($d['time'], 0, 2).substr($d['time'], 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
+  return  $key;
+}
 
 function Tableau_Conf($chemin){
   $contenu = json_decode(file_get_contents($chemin));
@@ -44,7 +49,6 @@ function Tableau_Conf($chemin){
 
 
 function creerConference($a){
-  extract($_POST);
   $c = new Conference();
   $c->title=$a['title'];
   $c->location = $a['location'];
