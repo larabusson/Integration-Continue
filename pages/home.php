@@ -1,18 +1,18 @@
 <?php
   session_start();
   $Connecte = false ;
-  if (!empty($_SESSION['login']) && !empty($_SESSION['pass'])){
+  if (!empty($_SESSION['login']) && !empty($_SESSION['pass'])){ /*Check if a section has been begun*/
     $Connecte = true;
   }
   else header('Location: ../functions/deconnexion.php');
   include('../functions/language.php');
-  if(isset($_GET['language'])){
+  if(isset($_GET['language'])){  /*Check the language*/
     $language=$_GET['language'];
   }
   else{
     $language = 'en';
   }
-	$file_precontent=file_get_contents("../texte/list_conf.json");
+	$file_precontent=file_get_contents("../texte/list_conf.json"); /*Load the conferences*/
 	$file_content=json_decode($file_precontent,true);
   require_once('../functions/function.php');
 ?>
@@ -57,6 +57,7 @@
         </div>
               <div class="container">
                     <?php
+                    /*Display the conference*/
                     if ($Connecte) {
                       echo "<h2> " . $langue['home']['hi'][$language]." ". $_SESSION['login']  . "</h2>";
                     }
@@ -82,7 +83,7 @@
                                 <td><?php echo $v['author']; ?></td>
                                 <td><?php echo $v['title']; ?></td>
                                 <td><?php echo $v['location']; ?></td>
-                                <?php $v['description']=html_entity_decode($v['description']); ?> 
+                                <?php $v['description']=html_entity_decode($v['description']); ?>
                                 <td><?php echo $v['description']; ?></td>
                                 <?php if ($_SESSION['admin']==2){ ?>
                                 <td><a href="./Ajout.php?id=<?php echo $key?>" id= <?php $key ?>><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=false;?>"name='bouton' value=<?php $v ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></td></a>

@@ -1,39 +1,41 @@
 <?php
     session_start();
     $bool = 1;
-    $file = @fopen("../texte/login.txt", "r+");
+    $file = @fopen("../texte/login.txt", "r+"); /*open the file of login*/
     include('../functions/language.php');
-    if(isset($_GET['language'])){
+    if(isset($_GET['language'])){ /*Check the language*/
       $language=$_GET['language'];
     }
     else{
       $language = 'en';
     }
-    if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['pass'])) {
+    if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['pass'])) {  /*Check the inputs*/
       extract($_POST);
-      $crypted_pass=hash("md5",$_POST['pass']);
+      $crypted_pass=hash("md5",$_POST['pass']);  /*Hash the password*/
       if($file){
         while(!feof($file) && $bool==1){
+          /*Read the file*/
             $ligne=fgets($file);
             $logth=strtok($ligne, ';');
             $passth=strtok(';');
             $admin=strtok(';');
+          /*Check the password*/
             if($logth==$login && $crypted_pass==$passth){
               $_SESSION['login'] = $_POST['login'];
               $_SESSION['pass'] = $_POST['pass'];
               $_SESSION['admin']= $admin=='2';
               $bool=0;
-              setcookie('login', $_POST['login'], time()+3600*24*31);
+              setcookie('login', $_POST['login'], time()+3600*24*31); /*Initialiaze the cookies*/
               header('Location: ./home.php');
               exit();
             }
         }
         if($bool!=0){
-          echo "Vous devez saisir des identifiants valides";
+          echo "<script type='text/javascript'> alert('{$langue['login']['idValid'][$language]}'); </script>";
         }
       }
       else {
-        echo "il y a un probleme";
+        echo "<script type='text/javascript'> alert('{$langue['login']['file'][$language]}'); </script>";
       }
     }
     fclose($file);

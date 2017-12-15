@@ -17,6 +17,13 @@ $langue = array('signup' => array('msgAccueil' => array('fr' => "Identifiez vous
                                'logout' => array('fr' => "Se déconnecter", 'en' => "Logout"),
                                'hi' => array('fr' => "Bonjour", 'en' => "Hello"),
                              ),
+              'login' => array('idValid' =>array('fr'=> "Vous devez saisir des identifiants valides", 'en'=> "You have to enter valid identifiers"),
+                                'file' =>array('fr' => "Problème d'ouverture du fichier", 'en' => "Issue with the file")
+            ),
+             'ajout' => array('BadDate' => array('fr'=>'Attention la date entrée n est pas correcte', 'en'=> 'Be carefull, the date is not correct'),
+                              'Empty' => array('fr' =>'Attention des champs sont vides', 'en'=>'Be carefull some inputs are empty'),
+                              'Confok' =>array('fr' => 'La conference a bien été ajoutée ! Cliquez sur ZZagenda pour revenir à la page d acceuil', 'en'=>'The conference has been added! Click on ZZagenda to come back to your home page')
+            )
 
              );
 ?>

@@ -14,30 +14,10 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $tab['date']="2050-02-03";
       $tab['time']="10-10";
       $tab['description']="";
-      $c=creerConference($tab);
-      $this->assertTrue(strcmp($c->title, "test")==0, "OK");
-
-
-
-
       $key = AjoutConference($tab, "./texte/Conf_test.json");
-      /*$tab = Tableau_Conf("./texte/list_conf.json");
-      $NB = count($tab);
-      $this->assertTrue(5==$NB, "OK");*/
-
-      $this->assertTrue(supprimer($key, "./texte/Conf_test.json"));
-    /*  $tab = Tableau_Conf("./texte/list_conf.json");
-      $NB = count($tab);
-      $this->assertTrue(4==$NB, "OK");*/
-
-    /*  $this->assertTrue(array_key_exists($key , $Tableau_conf));*/
+      $this->assertTrue(supprimer($key, "./texte/Conf_test.json")); /*Check the conference creation, conference add, conference delete and json lecture*/
   }
 
-  public function test_Lecture_Fichier(){
-    /*  $tab = Tableau_Conf("./texte/Conf_test.json");
-      $NB = count($tab);
-      $this->assertTrue(0==$NB, "OK");*/
-  }
 
 
 
