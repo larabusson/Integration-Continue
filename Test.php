@@ -9,6 +9,12 @@ class MesTests extends  PHPUnit_Framework_TestCase {
 
   public function testConf(){
       $tab['title']="test";
+      $tab['location']="";
+      $tab['author']="";
+      $tab['date']="";
+      $tab['time']="";
+      $tab['description']="";
+
       $c=creerConference($tab);
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
   }
