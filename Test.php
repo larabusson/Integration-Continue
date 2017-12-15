@@ -22,7 +22,7 @@ class MesTests extends  PHPUnit_Framework_TestCase {
 
 /*Test the language*/
 public function testLangue(){
-  require('./functions/language');
+  require('./functions/language.php');
   $language='en';
   $this->assertTrue($langue['home']['time'][$language]=="Time");
   $language='fr';
