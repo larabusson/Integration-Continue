@@ -28,11 +28,11 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $this->assertTrue(array_key_exists($key , $Tableau_conf));*/
   }
 
-  public function test_Lecture_Fichier(){
+  /*public function test_Lecture_Fichier(){
       $tab = Tableau_Conf("./texte/Conf_test.json");
       $NB = count($tab);
       $this->assertTrue(3==$NB, "OK");
-  }
+  }*/
 
 
 
