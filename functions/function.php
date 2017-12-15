@@ -13,14 +13,14 @@ public $date;
 
 
 function AjoutConference($d, $chemin){
-  $tab = array();
+  $tableau_conf = array();
   $c = creerConference($d);
-  $tab=Tableau_Conf($chemin);
-  $NombreConf = count($tab);
+  $tableau_conf=tableau_confleau_Conf($chemin);
+  $NombreConf = count($tableau_conf);
   $key= creer_clef($d, $NombreConf);
-  $tab[$key] = $c ;
-  ksort($tab);
-  $contenu = json_encode($tab);
+  $tableau_conf[$key] = $c ;
+  ksort($tableau_conf);
+  $contenu = json_encode($tableau_conf);
   $fichier = fopen($chemin, 'w+');
 
   // Ecriture dans le fichier
@@ -35,14 +35,14 @@ function creer_clef($d, $NombreConf){
   return  $key;
 }
 
-function Tableau_Conf($chemin){
+function tableau_confleau_Conf($chemin){
   $contenu = json_decode(file_get_contents($chemin));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){
-       $tab[$key] = $d;
+       $tableau_conf[$key] = $d;
     }
   }
-  return $tab ;
+  return $tableau_conf ;
 }
 
 
@@ -61,12 +61,12 @@ function supprimer($i){
   $contenu = json_decode(file_get_contents("../texte/list_conf.json"));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){
-       $tab[$key] = $d;
+       $tableau_conf[$key] = $d;
     }
   }
 
-   unset($tab[$i]);
-   $contenu = json_encode($tab);
+   unset($tableau_conf[$i]);
+   $contenu = json_encode($tableau_conf);
    $fichier = fopen("../texte/list_conf.json", 'w+');
    fwrite($fichier, $contenu);
 
