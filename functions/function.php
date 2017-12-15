@@ -18,7 +18,6 @@ function AjoutConference($d, $chemin){
   $c = creerConference($d);
   $tab=Tableau_Conf($chemin);
   $NombreConf = count($tab);
-  //$key = substr($d['date'], 0, 4).substr($d['date'], 5, 2).substr($d['date'], 8, 2).substr($d['time'], 0, 2).substr($d['time'], 3, 2).str_pad($NombreConf, 3, '0', STR_PAD_LEFT);
   $key= creer_clef($d);
   $tab[$key] = $c ;
   ksort($tab);

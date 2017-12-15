@@ -21,7 +21,7 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       AjoutConference($tab, "./texte/Conf_test.json");
       $Tableau_conf = Tableau_Conf("./texte/Conf_test.json");
       $key = creer_clef($tab);
-      $this->assertTrue(array_key_exists ($key , $Tableau_conf );
+      $this->assertTrue(array_key_exists($key , $Tableau_conf ));
   }
 
   public function test_Lecture_Fichier(){
