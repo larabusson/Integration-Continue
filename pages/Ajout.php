@@ -38,7 +38,8 @@ if ($id) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="../css/home.css" rel="stylesheet">
   <link href="../css/ajout.css" rel="stylesheet">
-
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
 
@@ -105,7 +106,7 @@ if ($id) {
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Description</label>
         <div class="col-10">
-          <input class="form-control monstyle descr" type="text" name="description" value="<?php if ($id)  echo $contenuT['description']; ?>" id="example-text-input">
+          <textarea class="form-control monstyle descr" type="textarea" name="description" value="<?php if ($id)  echo $contenuT['description']; ?>" id="example-text-input"></textarea>
         </div>
       </div>
     </div>

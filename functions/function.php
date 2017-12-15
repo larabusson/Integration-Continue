@@ -13,7 +13,6 @@ public $date;
 
 
 function AjoutConference($d, $chemin){
-  //extract($_POST);
   $tab = array();
   $c = creerConference($d);
   $tab=Tableau_Conf($chemin);
