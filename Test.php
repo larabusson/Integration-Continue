@@ -15,8 +15,7 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $tab['time']="10-10";
       $tab['description']="";
       $c=creerConference($tab);
-      AjoutConference($c, "./texte/Conf_test.json");
-
+      AjoutConference($tab, "./texte/Conf_test.json");
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
 
 
