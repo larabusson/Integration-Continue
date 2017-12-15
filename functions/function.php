@@ -67,10 +67,10 @@ function supprimer($i, $chemin){
        $tab[$key] = $d;
     }
   }
- if (array_key_exists($i, $tab)){
-   unset($tab[$i]);
-   $bool = true;
- }
+   if (array_key_exists($i, $tab)){
+     unset($tab[$i]);
+     $bool = true;
+   }
    $contenu = json_encode($tab);
    $fichier = fopen($chemin, 'w+');
    fwrite($fichier, $contenu);
