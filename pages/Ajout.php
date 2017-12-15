@@ -137,7 +137,7 @@ if ($id) {
 
 <?php
 if ($contenu){
-		 supprimer($id);
+		 supprimer($id, "../texte/list_conf.json");
 	 }
 $today=getdate();
 $_POST['title']=htmlentities($_POST['title']);
