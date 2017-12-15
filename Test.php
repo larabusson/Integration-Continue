@@ -23,7 +23,7 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $conf['description']="";
       AjoutConference($conf, "./texte/Conf_test.json");
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
-      supprimer("201802020200003");
+      supprimer("201802020200003", "./texte/list_conf.json");
       $tab = Tableau_Conf("./texte/list_conf.json");
       $NB = count($tab);
       $this->assertTrue(3==$NB, "OK");
