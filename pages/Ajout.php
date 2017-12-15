@@ -5,6 +5,7 @@ if (empty($_SESSION['login']) || empty($_SESSION['pass'])){
 }
 else{
 require_once('../functions/function.php');
+
 }
 include('../functions/language.php');
 if(isset($_GET['language'])){
@@ -13,11 +14,7 @@ if(isset($_GET['language'])){
 else{
 	$language = 'en';
 }
-/*if($_SESSION['redirection']){
-	$_SESSION['redirection'] = 0;
-	echo"coucou";
-	header('Location: ./home.php');
-}*/
+
 $id=$_GET['id'];
 $contenu=0;
 if ($id) {
@@ -139,15 +136,7 @@ if ($id) {
 
 <?php
 if ($contenu){
-		  foreach($contenu as $key => $d){
-			 $tab[$key] = $d; 
-		  }
-		 unset($tab[$_GET['id']]);
-		 $contenu = json_encode($tab);
-		 $fichier = fopen("../texte/list_conf.json", 'w+');
-		 fwrite($fichier, $contenu);
-		 // Fermeture du fichier
-		 fclose($fichier);
+		 supprimer($id);
 	 }
 $today=getdate();
 if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
