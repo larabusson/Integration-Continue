@@ -108,7 +108,7 @@
           </div>
           <div class="form-group">
             <label class="sr-only" for="form-password">Password</label>
-            <input type="password" name="pass" placeholder=<?php echo $langue['signup']['password'][$language]; ?> class="form-password form-control" id="form-password">
+            <input type="password" name="pass" placeholder="<?php echo $langue['signup']['password'][$language]; ?>" class="form-password form-control" id="form-password">
           </div>
           <button type="submit" class="btn btn1"><?php echo $langue['signup']['submit'][$language]; ?></button>
       </form>

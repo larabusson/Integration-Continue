@@ -140,6 +140,10 @@ if ($contenu){
 		 supprimer($id);
 	 }
 $today=getdate();
+$_POST['title']=htmlentities($_POST['title']);
+$_POST['author']=htmlentities($_POST['author']);
+$_POST['location']=htmlentities($_POST['location']);
+$_POST['description']=htmlentities($_POST['description']);
 if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
 	 if (checkdate(substr($_POST['date'], 5, 2), substr($_POST['date'], 8, 2), substr($_POST['date'], 0, 4))){
 			$today=$today['mday'].'-'.$today['mon'].'-'.$today['year'];

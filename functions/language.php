@@ -3,7 +3,7 @@ $langue = array('signup' => array('msgAccueil' => array('fr' => "Identifiez vous
                                         'msgAccueil2' => array('fr' => "Entrez votre nom d'utilisateur et votre mot de passe", 'en' => "Enter your username and your password"),
                                         'submit' => array('fr' => "Se connecter", 'en' => "Sign in"),
                                         'username' => array('fr' => "Nom d'utilisateur", 'en' => "Username"),
-                                        'password' => array('fr' => "Motdepasse", 'en' => "password"),
+                                        'password' => array('fr' => "Mot de passe", 'en' => "password"),
                                         'authentification' => array('fr' => "Vous devez saisir des identifiants valide", "en" => "Username and password are wrong"),
                                         ),
 
@@ -17,6 +17,6 @@ $langue = array('signup' => array('msgAccueil' => array('fr' => "Identifiez vous
                                'logout' => array('fr' => "Se déconnecter", 'en' => "Logout"),
                                'hi' => array('fr' => "Bonjour", 'en' => "Hello"),
                              ),
-              
+
              );
 ?>

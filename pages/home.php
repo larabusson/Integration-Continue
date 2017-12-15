@@ -82,6 +82,7 @@
                                 <td><?php echo $v['author']; ?></td>
                                 <td><?php echo $v['title']; ?></td>
                                 <td><?php echo $v['location']; ?></td>
+                                <?php $v['description']=html_entity_decode($v['description']); ?> 
                                 <td><?php echo $v['description']; ?></td>
                                 <?php if ($_SESSION['admin']==2){ ?>
                                 <td><a href="./Ajout.php?id=<?php echo $key?>" id= <?php $key ?>><button type="button" onclick="<?php $_SESSION['conf']=$v; $_SESSION['fonc']=false;?>"name='bouton' value=<?php $v ?>><i class="fa fa-pencil" aria-hidden="true"></i></button></td></a>
