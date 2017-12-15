@@ -17,7 +17,7 @@ function AjoutConference($d, $chemin){
   $c = creerConference($d);
   $tab=Tableau_Conf($chemin);
   $NombreConf = count($tab);
-  $key= creer_clef($d);
+  $key= creer_clef($d, $NombreConf);
   $tab[$key] = $c ;
   ksort($tab);
   $contenu = json_encode($tab);
