@@ -28,6 +28,7 @@ function AjoutConference($d, $chemin){
 
   // Fermeture du fichier
   fclose($fichier);
+  return $key;
 }
 
 function creer_clef($d, $NombreConf){
@@ -59,20 +60,24 @@ function creerConference($a){
 }
 
 function supprimer($i, $chemin){
+  $bool = false;
   $contenu = json_decode(file_get_contents($chemin));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){
        $tab[$key] = $d;
     }
   }
-
+ if ($tab[$i]){
    unset($tab[$i]);
+   $bool = true;
+ }
    $contenu = json_encode($tab);
    $fichier = fopen($chemin, 'w+');
    fwrite($fichier, $contenu);
 
    // Fermeture du fichier
    fclose($fichier);
+   return $bool;
 }
 
  ?>

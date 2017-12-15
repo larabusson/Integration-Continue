@@ -20,15 +20,15 @@ class MesTests extends  PHPUnit_Framework_TestCase {
 
 
 
-      AjoutConference($tab, "./texte/Conf_test.json");
-      $tab = Tableau_Conf("./texte/list_conf.json");
+      $key = AjoutConference($tab, "./texte/Conf_test.json");
+      /*$tab = Tableau_Conf("./texte/list_conf.json");
       $NB = count($tab);
-      $this->assertTrue(5==$NB, "OK");
+      $this->assertTrue(5==$NB, "OK");*/
 
-      supprimer("201802020200003", "./texte/Conf_test.json");
-      $tab = Tableau_Conf("./texte/list_conf.json");
+      $this->assertTrue(supprimer($key, "./texte/Conf_test.json"));
+    /*  $tab = Tableau_Conf("./texte/list_conf.json");
       $NB = count($tab);
-      $this->assertTrue(4==$NB, "OK");
+      $this->assertTrue(4==$NB, "OK");*/
 
     /*  $this->assertTrue(array_key_exists($key , $Tableau_conf));*/
   }
