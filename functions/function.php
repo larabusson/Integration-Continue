@@ -59,7 +59,7 @@ function creerConference($a){
 }
 
 function supprimer($i, $chemin){
-  $contenu = json_decode(file_get_contents("../texte/list_conf.json"));
+  $contenu = json_decode(file_get_contents($chemin));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){
        $tab[$key] = $d;
