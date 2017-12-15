@@ -36,6 +36,7 @@ function creer_clef($d, $NombreConf){
 }
 
 function Tableau_Conf($chemin){
+  $tab= array();
   $contenu = json_decode(file_get_contents($chemin));
   if ($contenu!=NULL){
     foreach($contenu as $key => $d){

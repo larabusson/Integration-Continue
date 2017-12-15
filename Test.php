@@ -21,7 +21,7 @@ class MesTests extends  PHPUnit_Framework_TestCase {
       $conf['date']="2050-02-03";
       $conf['time']="10-10";
       $conf['description']="";
-      AjoutConference($conf, "../texte/Conf_test.json");
+      AjoutConference($conf, "./texte/Conf_test.json");
       $this->assertTrue(strcmp($c->title, "test")==0, "OK");
 
 
