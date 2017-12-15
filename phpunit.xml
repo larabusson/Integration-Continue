@@ -2,7 +2,7 @@
 <phpunit colors="true"
          >
     <testsuites>
-        <testsuite name="Calc Test Suite">
+        <testsuite name="ZZagenda">
             <directory>.</directory>
         </testsuite>
     </testsuites>
