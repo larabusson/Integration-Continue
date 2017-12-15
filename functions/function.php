@@ -67,7 +67,7 @@ function supprimer($i, $chemin){
        $tab[$key] = $d;
     }
   }
- if ($tab[$i]){
+ if (array_key_exists($i, $tab){
    unset($tab[$i]);
    $bool = true;
  }
