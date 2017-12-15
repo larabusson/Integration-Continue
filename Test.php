@@ -20,6 +20,15 @@ class MesTests extends  PHPUnit_Framework_TestCase {
 
 
 
+/*Test the language*/
+public function testLangue(){
+  require('./functions/language');
+  $language='en';
+  $this->assertTrue($langue['home']['time'][$language]=="Time");
+  $language='fr';
+  $this->assertTrue($langue['home']['time'][$language]=="Heure");
+
+}
 
 
 
