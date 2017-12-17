@@ -21,8 +21,36 @@ if ($id) {				/*Check if we are in case of modification of Conference */
 		$file_precontent=file_get_contents("../texte/list_conf.json");
 		$contenu=json_decode($file_precontent,true);
 		$contenuT=$contenu[$id];
-
 }
+/*Check if a conference is selected for modification or removal*/
+if ($contenu){
+		 supprimer($id, "../texte/list_conf.json");
+	 }
+
+
+/*Check forbidden characters*/
+$_POST['title']=htmlentities($_POST['title']);
+$_POST['author']=htmlentities($_POST['author']);
+$_POST['location']=htmlentities($_POST['location']);
+$_POST['description']=htmlentities($_POST['description']);
+
+/*Check the input*/
+if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
+	$today=getdate();
+	/*Check the date*/
+	 if (checkdate(substr($_POST['date'], 5, 2), substr($_POST['date'], 8, 2), substr($_POST['date'], 0, 4))){
+			$today=$today['mday'].'-'.$today['mon'].'-'.$today['year'];
+			if(strtotime($_POST['date']) > strtotime($today)){
+				extract($_POST);
+				$b=AjoutConference($_POST, "../texte/list_conf.json");
+				header('Location: ./home.php');
+				if($b)   echo $langue['ajout']['Confok'][$language];
+			}
+	 		else echo $langue['ajout']['BadDate'][$language];
+	}
+	else echo $langue['ajout']['BadDate'][$language];
+}
+else echo $langue['ajout']['Empty'][$language];
 
  ?>
 
@@ -137,34 +165,6 @@ if ($id) {				/*Check if we are in case of modification of Conference */
 
 <?php
 
-/*Check if a conference is selected for modification or removal*/
-if ($contenu){
-		 supprimer($id, "../texte/list_conf.json");
-	 }
-
-
-/*Check forbidden characters*/
-$_POST['title']=htmlentities($_POST['title']);
-$_POST['author']=htmlentities($_POST['author']);
-$_POST['location']=htmlentities($_POST['location']);
-$_POST['description']=htmlentities($_POST['description']);
-
-/*Check the input*/
-if(isset($_POST) &&!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['location'])){
-	$today=getdate();
-	/*Check the date*/
-	 if (checkdate(substr($_POST['date'], 5, 2), substr($_POST['date'], 8, 2), substr($_POST['date'], 0, 4))){
-			$today=$today['mday'].'-'.$today['mon'].'-'.$today['year'];
-			if(strtotime($_POST['date']) > strtotime($today)){
-				extract($_POST);
-				$b=AjoutConference($_POST, "../texte/list_conf.json");
-				if($b)   echo $langue['ajout']['Confok'][$language]; 
-			}
-	 		else echo $langue['ajout']['BadDate'][$language];
-	}
-	else echo $langue['ajout']['BadDate'][$language];
-}
-else echo $langue['ajout']['Empty'][$language];
 
 
  ?>
