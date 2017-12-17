@@ -134,7 +134,7 @@ else echo $langue['ajout']['Empty'][$language];
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Description</label>
         <div class="col-10">
-          <textarea class="form-control monstyle descr" type="textarea" name="description" value="<?php if ($id)  echo $contenuT['description']; ?>" id="example-text-input"></textarea>
+          <textarea class="form-control monstyle descr" type="textarea" name="description"><?php if ($id)  echo $contenuT['description']; ?></textarea>
         </div>
       </div>
     </div>
